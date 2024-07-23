@@ -50,13 +50,47 @@
 # 	raise
 
 
-def divide(x, y):
-    if y == 0:
-        raise ZeroDivisionError("division by zero is not allowed")
-    return x / y
 
-try:
-    result = divide(10, 0)
-except ZeroDivisionError as e:
-    print(e)
 
+# def divide(x, y):
+#     if y == 0:
+#         raise ZeroDivisionError("division by zero is not allowed")
+#     return x / y
+
+# try:
+#     result = divide(10, 0)
+# except ZeroDivisionError as e:
+#     print(e)
+
+
+
+# def func():
+#     raise ConnectionError
+
+# try:
+#     func()
+# except ConnectionError as exc:
+#     print(exc)
+#     raise RuntimeError('Failed to open database') from exc
+
+
+
+class B(Exception):
+    pass
+
+class C(Exception):
+    pass
+
+class D(B):
+    pass
+
+for cls in [B, C, D]:
+    try:
+        print(cls)
+        raise cls()
+    except B:
+        print("B")
+    except C:
+        print("C")
+    except D:
+        print("D")
